@@ -1,0 +1,15 @@
+{%- comment -%}
+  Invisible anchor placed directly above a section the jump bar links to.
+  Set the ID to match a jump bar link (e.g. "best-sellers", "charm-collector").
+{%- endcomment -%}
+<div id="{{ section.settings.anchor_id | handleize }}" class="gg-anchor" aria-hidden="true"></div>
+
+{% schema %}
+{
+  "name": "Gift guide anchor",
+  "settings": [
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID", "default": "best-sellers" }
+  ],
+  "presets": [{ "name": "Gift guide anchor" }]
+}
+{% endschema %}

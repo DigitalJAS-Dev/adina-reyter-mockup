@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Adina Reyter Holiday Gift Guide: starter styles
+   Load only on the gift guide templates and the header nav item.
+   Fonts (Domaine, Mundial, EB Garamond) are already loaded by the theme.
+   ========================================================================== */
+
+:root {
+  --gg-ink: #1C1B19;
+  --gg-headline: #000000;
+  --gg-body: #3D3A35;
+  --gg-muted: #6B655D;
+  --gg-panel: #F8F6F5;
+  --gg-hairline: #E0D8CB;
+  --gg-gold-text: #7A5B2A;
+  --gg-gutter: 20px;
+}
+
+/* "Gift Guide" main-nav item: target by URL, adjust the handle to match */
+.header__primary-nav a[href$="/pages/gift-guide"] {
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--gg-gold-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Intro */
+.gg-intro { text-align: center; padding: 52px 20px 0; }
+.gg-intro__bow { width: 70px; height: 50px; margin: 0 auto 10px; }
+.gg-intro__bow svg { width: 100%; height: 100%; }
+.gg-intro__overline {
+  font-family: Domaine, serif; font-size: 14px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gg-muted); margin: 0;
+}
+.gg-intro__heading {
+  font-family: Domaine, serif; font-weight: 400; font-size: 32px;
+  line-height: 1.2; letter-spacing: 0.48px; color: var(--gg-headline);
+  margin: 16px 0 0;
+}
+@media (max-width: 749px) {
+  .gg-intro { padding-top: 28px; }
+  .gg-intro__bow { width: 50px; height: 35px; margin-bottom: 8px; }
+  .gg-intro__overline { font-size: 12px; letter-spacing: 2.5px; }
+  .gg-intro__heading { font-size: 26px; margin-top: 12px; }
+}
+
+/* Top tile row labels: each word capitalized, Mundial */
+.template-page-gift-guide .collection-card__title,
+.gg-tiles .collection-card__title {
+  font-family: mundial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+/* Jump bar */
+.gg-jump { max-width: 1360px; margin: 48px auto 0; padding: 0 40px; }
+.gg-jump__inner {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 40px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--gg-hairline);
+}
+.gg-jump__label { font-family: Domaine, serif; font-size: 28px; line-height: 1.1; margin-right: 8px; }
+.gg-jump__link {
+  font-family: mundial, sans-serif; font-size: 13px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gg-muted); text-decoration: none; padding: 8px 0;
+}
+.gg-jump__link[aria-current="true"] {
+  color: var(--gg-ink); text-decoration: underline;
+  text-underline-offset: 7px; text-decoration-thickness: 1px;
+}
+.gg-jump__link:focus-visible { outline: 2px solid var(--gg-ink); outline-offset: 4px; }
+@media (max-width: 749px) {
+  .gg-jump { padding: 0; margin-top: 12px; }
+  .gg-jump__inner { flex-wrap: nowrap; overflow-x: auto; gap: 22px; padding: 8px 20px 6px; white-space: nowrap; }
+  .gg-jump__label { font-size: 20px; }
+  .gg-jump__link { font-size: 11px; letter-spacing: 0.16em; }
+}
+
+/* Anchor offset so jump targets clear the sticky header */
+.gg-anchor { scroll-margin-top: 140px; }
+
+/* Split banners: flush 50/50, no gap, story panel colour.
+   Scope to the gift guide template; class names below are Prestige
+   image-with-text guesses: confirm against the theme markup. */
+.template-page-gift-guide .image-with-text { gap: 0; }
+.template-page-gift-guide .image-with-text__content-wrapper { background: var(--gg-panel); }
+
+/* Section heading style ("BEST SELLERS"), matches their "Our most wanted" */
+.gg-section-heading {
+  font-family: mundial, sans-serif; font-weight: 500; font-size: 28px;
+  letter-spacing: 5px; text-transform: uppercase; line-height: 1.2;
+}
+@media (max-width: 749px) { .gg-section-heading { font-size: 20px; letter-spacing: 3px; } }

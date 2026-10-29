@@ -1,0 +1,67 @@
+{%- comment -%}
+  "Shop gifts" jump bar. Each block links to a gg-anchor on the same page.
+  The active link updates on click and while scrolling.
+{%- endcomment -%}
+<nav class="gg-jump" aria-label="Jump to a section" data-gg-jump>
+  <div class="gg-jump__inner">
+    <span class="gg-jump__label">{{ section.settings.label | escape }}</span>
+    {%- for block in section.blocks -%}
+      <a class="gg-jump__link" href="#{{ block.settings.anchor_id | handleize }}"
+        {% if forloop.first %}aria-current="true"{% endif %} {{ block.shopify_attributes }}>
+        {{- block.settings.text | escape -}}
+      </a>
+    {%- endfor -%}
+  </div>
+</nav>
+
+<script>
+  (function () {
+    var nav = document.currentScript.previousElementSibling;
+    if (!nav || !nav.matches('[data-gg-jump]')) return;
+    var links = Array.prototype.slice.call(nav.querySelectorAll('.gg-jump__link'));
+    function setActive(link) {
+      links.forEach(function (l) { l.removeAttribute('aria-current'); });
+      if (link) link.setAttribute('aria-current', 'true');
+    }
+    links.forEach(function (l) { l.addEventListener('click', function () { setActive(l); }); });
+    if (!('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function (l) {
+      var t = document.getElementById(l.getAttribute('href').slice(1));
+      if (t) map[t.id] = l;
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting && map[e.target.id]) setActive(map[e.target.id]); });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Gift guide jump bar",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "Shop gifts" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Best Sellers" },
+        { "type": "text", "id": "anchor_id", "label": "Anchor ID", "default": "best-sellers" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Gift guide jump bar",
+    "blocks": [
+      { "type": "link", "settings": { "text": "Best Sellers", "anchor_id": "best-sellers" } },
+      { "type": "link", "settings": { "text": "The Charm Collector", "anchor_id": "charm-collector" } },
+      { "type": "link", "settings": { "text": "The Stacker", "anchor_id": "stacker" } },
+      { "type": "link", "settings": { "text": "The Sentimentalist", "anchor_id": "sentimentalist" } },
+      { "type": "link", "settings": { "text": "The Sterling Devotee", "anchor_id": "sterling-devotee" } }
+    ]
+  }]
+}
+{% endschema %}

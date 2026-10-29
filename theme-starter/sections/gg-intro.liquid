@@ -1,0 +1,22 @@
+{%- comment -%} Holiday Gift Guide intro: bow, overline, headline. {%- endcomment -%}
+<div class="gg-intro">
+  {%- if section.settings.show_bow -%}
+    <div class="gg-intro__bow">{%- render 'gg-bow' -%}</div>
+  {%- endif -%}
+  {%- if section.settings.overline != blank -%}
+    <p class="gg-intro__overline">{{ section.settings.overline | escape }}</p>
+  {%- endif -%}
+  <h1 class="gg-intro__heading">{{ section.settings.heading | escape }}</h1>
+</div>
+
+{% schema %}
+{
+  "name": "Gift guide intro",
+  "settings": [
+    { "type": "checkbox", "id": "show_bow", "label": "Show bow", "default": true },
+    { "type": "text", "id": "overline", "label": "Overline", "default": "Adina’s Gift Guide" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "’Tis the season to be charming" }
+  ],
+  "presets": [{ "name": "Gift guide intro" }]
+}
+{% endschema %}
