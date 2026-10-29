@@ -101,15 +101,15 @@ Product shots on the first two tiles keep them visually distinct from the four o
 
 **6. Best sellers.** Featured collection with 4 products, from the existing best sellers collection.
 - **Heading:** "BEST SELLERS" in their uppercase Mundial heading style.
-- **CTA:** "Shop all best sellers" as a `.link`, right-aligned on the heading row.
+- **CTA:** "Shop all" as a `.link`, right-aligned on the heading row.
 - **Products:** `3-diamond-amigos-curve-posts, the-collector-necklace, groovy-diamond-initial-charm-necklace-on-rolo-chain, celestial-diamonds-wide-huggie-hoops`
 
 **7–14. Gift edits.** For each persona, two sections:
 - **a. Image with text**
   - Story panel and image 50/50, flush with no gap. Image side alternates (story left on edits 1 and 3, right on 2 and 4).
   - Panel background `#F8F6F5`; content vertically centered, padding about 56px.
-  - Content: eyebrow "Gift edit 0N", title, story, then the CTA link "Shop all 20 pieces" to the persona collection.
-- **b. Featured collection:** 4 products from the persona collection, no heading.
+  - Content: eyebrow "Gift edit 0N", title, story. No CTA inside the banner.
+- **b. Featured collection:** 4 products from the persona collection, no heading. A "Shop all" `.link` to the persona collection sits right-aligned directly above the products (same placement as Best sellers). On mobile it is also right-aligned above the 2-column grid.
 
 | Edit | Title | Story | Image |
 |---|---|---|---|
